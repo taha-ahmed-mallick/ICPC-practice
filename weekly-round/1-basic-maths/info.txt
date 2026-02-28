@@ -1,0 +1,3 @@
+LINK: https://vjudge.net/contest/791218
+Begin : 2026-02-21 22:30 UTC+5 -> lasting for 1 hour
+7 problems A, B, C, D, E, F, G
