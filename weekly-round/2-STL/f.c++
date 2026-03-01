@@ -2,43 +2,58 @@
 #include <vector>
 using namespace std;
 
+typedef struct
+{
+    int id, enter, exit;
+} member;
+
 int main()
 {
-    int logs, max_mem = 0;
+    int logs, max = 0;
     cin >> logs;
-    vector<int> mem[logs];
+    vector<member> mem;
+
     for (int i = 0; i < logs; i++)
     {
         char move;
         cin >> move;
         int id;
         cin >> id;
+
         if (move == '+')
-            mem[i].push_back(id);
+            // member temp;
+            // temp.id = id;
+            // temp.enter = i;
+            // temp.exit = 100;
+            // mem.push_back(temp); //its equivalent ⬇
+            mem.push_back({id, i, -1});
         else if (move == '-')
         {
+            int j;
             bool found = false;
-            for (int j = 0; j < i; j++)
-                for (int itr : mem[j])
-                    if (itr == id)
-                    {
-                        found = true;
-                        break;
-                    }
-
-            if (!found)
-                if (i == 0)
-                    mem[i].push_back(id);
+            for (j = mem.size() - 1; j >= 0; j--)
+                if (mem[j].id == id)
+                {
+                    found = true;
+                    break;
+                }
+            if (found)
+                if (mem[j].exit == -1)
+                    mem[j].exit = i;
                 else
-                    for (int j = 0; j < i; j++)
-                        mem[j].push_back(id);
+                    cerr << "This shouldn't occur" << endl;
+            else
+                mem.push_back({id, -1, i});
         }
     }
-    for (int i = 0; i < logs; i++)
-    {
-        if (mem[i].size() > max_mem)
-            max_mem = mem[i].size();
+
+    for (int i = -1; i < logs; i++) {
+        int count = 0;
+        for (auto &curr: mem)
+            if (curr.enter <= i && (curr.exit > i || curr.exit == -1))
+                count++;
+        if (count > max) max = count;
     }
-    cout << max_mem;
+    cout << max << endl;
     return 0;
 }
