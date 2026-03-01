@@ -41,7 +41,7 @@ int main()
                 if (mem[j].exit == -1)
                     mem[j].exit = i;
                 else
-                    cerr << "This shouldn't occur" << endl;
+                    cerr << "This shouldn't occur AT ALL!" << endl;
             else
                 mem.push_back({id, -1, i});
         }
