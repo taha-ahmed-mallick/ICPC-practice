@@ -1,4 +1,4 @@
 LINK: https://vjudge.net/contest/792858
 Begin : 2026-02-28 22:30 UTC+5 -> lasting for 1 hour
 6 problems A, B, C, D, E, F
-Solved on time: A (did F but couldn't upload due to low ranking on codeforces)
+Solved on time: A
